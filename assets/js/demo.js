@@ -427,3 +427,6 @@ $("#activeUsersChart").sparkline([112,109,120,107,110,85,87,90,102,109,120,99,11
 	barSpacing: 10,
 	barColor: 'rgba(255,255,255,.3)'
 });
+
+
+/*i will give you informa tion and file structure to for the existing code base to follow it pattern and create a new api for all the order api you have created above .   route folder containing stuff like ().   model folder containing ().  controller folder containing().   this is my model for the order */

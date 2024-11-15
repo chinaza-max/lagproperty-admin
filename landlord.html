@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper sidebar_minimize">
       <!-- Sidebar -->
       <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
@@ -72,6 +72,7 @@
         </div>
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
+           
             <ul class="nav nav-secondary">
               <li class="nav-item">
                 <a
@@ -87,13 +88,90 @@
                 <div class="collapse" id="dashboard">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="demo1/index.html">
-                        <span class="sub-item">Dashboard 1</span>
+                      <a href="index.html">
+                        <span class="sub-item">Dashboard</span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </li>
+              <li class="nav-item active">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#users"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-users"></i>
+                  <p>Users</p>
+                  <span class="caret"></span>   
+                </a>
+                <div class="collapse" id="users">
+                  <ul class="nav nav-collapse">
+
+                    <li  class="active">
+                      <a href="#" >
+                        <span class="sub-item">LandLord</span>
+                      </a>
+                    </li>
+                    
+                    <li>   
+                      <a href="tenant-prop.html">
+                        <span class="sub-item">Tenant / ProspRenter </span>
+                      </a>
+                    </li>
+                    
+
+                  </ul>
+                </div>
+              </li>
+
+              <li class="nav-item">
+
+                <a href="/transaction.html">
+                 
+                  <i class="fas fa-money-bill"></i>
+                  <p>Trasactions</p>
+
+                </a>
+            
+              </li>
+              
+
+
+              <li class="nav-item">
+
+                <a
+                  href="/memo.html"
+                  
+                >
+                 
+                  <i class="fas fa-book"></i>
+                  <p> Memo </p>
+
+                </a>
+            
+              </li>
+              
+              <li class="nav-item">
+
+                <a
+                  data-bs-toggle="collapse"
+                  href="#Trasactions"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                
+                  <i class="fas icon-settings"></i>
+                  <p> Settings </p>
+
+                </a>
+            
+              </li>
+              
+              
+
+
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
@@ -193,20 +271,20 @@
                   </ul>
                 </div>
               </li>
-              <li class="nav-item active submenu">
+              <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#tables">
                   <i class="fas fa-table"></i>
                   <p>Tables</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse show" id="tables">
+                <div class="collapse" id="tables">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="tables/tables.html">
                         <span class="sub-item">Basic Table</span>
                       </a>
                     </li>
-                    <li class="active">
+                    <li>
                       <a href="tables/datatables.html">
                         <span class="sub-item">Datatables</span>
                       </a>
@@ -264,7 +342,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="documentation/index.html">
+                <a href="../../documentation/index.html">
                   <i class="fas fa-file"></i>
                   <p>Documentation</p>
                   <span class="badge badge-secondary">1</span>
@@ -322,6 +400,7 @@
                 </div>
               </li>
             </ul>
+
           </div>
         </div>
       </div>
@@ -713,7 +792,7 @@
         <div class="container">
           <div class="page-inner">
             <div class="page-header">
-              <h3 class="fw-bold mb-3">Prospective tenant / Tenant</h3>
+              <h3 class="fw-bold mb-3">Landlord</h3>
               <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
                   <a href="index.html">
@@ -743,22 +822,23 @@
                           <tr>
                             <th>Avatar</th>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>No Tenant</th>
+                            <th>No Building</th>
+                            <th>View Building</th>
+
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
                             <th>Avatar</th>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>No Tenant</th>
+                            <th>No Building</th>
+                            <th>View Building</th>
                           </tr>
                         </tfoot>
                         <tbody>
@@ -777,7 +857,10 @@
                             <td>Edinburgh</td>
                             <td>61</td>
                             <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td>
+                              <a href="/building.html" type="button" class="btn btn-primary">View</button>
+
+                            </td>
                           </tr>
                           <tr>
 

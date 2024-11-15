@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="assets/css/demo.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper sidebar_minimize">
       <!-- Sidebar -->
       <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
@@ -71,7 +71,9 @@
           <!-- End Logo Header -->
         </div>
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
+          
           <div class="sidebar-content">
+
             <ul class="nav nav-secondary">
               <li class="nav-item">
                 <a
@@ -87,13 +89,90 @@
                 <div class="collapse" id="dashboard">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="demo1/index.html">
-                        <span class="sub-item">Dashboard 1</span>
+                      <a href="index.html">
+                        <span class="sub-item">Dashboard</span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </li>
+              <li class="nav-item active">
+                <a
+                  data-bs-toggle="collapse"
+                  href="#users"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-users"></i>
+                  <p>Users</p>
+                  <span class="caret"></span>   
+                </a>
+                <div class="collapse" id="users">
+                  <ul class="nav nav-collapse">
+
+                    <li>
+                      <a href="/landlord.html" >
+                        <span class="sub-item">LandLord</span>
+                      </a>
+                    </li>
+                    
+                    <li class="active">   
+                      <a href="tenant-prop.html">
+                        <span class="sub-item">Tenant / ProspRenter </span>
+                      </a>
+                    </li>
+                    
+
+                  </ul>
+                </div>
+              </li>
+
+              <li class="nav-item">
+
+                <a href="/transaction.html">
+                 
+                  <i class="fas fa-money-bill"></i>
+                  <p>Trasactions</p>
+
+                </a>
+            
+              </li>
+              
+
+
+              <li class="nav-item">
+
+                <a
+                  href="/memo.html"
+                  
+                >
+                 
+                  <i class="fas fa-book"></i>
+                  <p> Memo </p>
+
+                </a>
+            
+              </li>
+              
+              <li class="nav-item">
+
+                <a
+                  data-bs-toggle="collapse"
+                  href="#Trasactions"
+                  class="collapsed"
+                  aria-expanded="false"
+                >
+                
+                  <i class="fas icon-settings"></i>
+                  <p> Settings </p>
+
+                </a>
+            
+              </li>
+              
+              
+
+
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
@@ -193,20 +272,20 @@
                   </ul>
                 </div>
               </li>
-              <li class="nav-item active submenu">
+              <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#tables">
                   <i class="fas fa-table"></i>
                   <p>Tables</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse show" id="tables">
+                <div class="collapse" id="tables">
                   <ul class="nav nav-collapse">
                     <li>
                       <a href="tables/tables.html">
                         <span class="sub-item">Basic Table</span>
                       </a>
                     </li>
-                    <li class="active">
+                    <li>
                       <a href="tables/datatables.html">
                         <span class="sub-item">Datatables</span>
                       </a>
@@ -264,7 +343,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="documentation/index.html">
+                <a href="../../documentation/index.html">
                   <i class="fas fa-file"></i>
                   <p>Documentation</p>
                   <span class="badge badge-secondary">1</span>
@@ -322,7 +401,10 @@
                 </div>
               </li>
             </ul>
+
+
           </div>
+
         </div>
       </div>
       <!-- End Sidebar -->
@@ -743,22 +825,24 @@
                           <tr>
                             <th>Avatar</th>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Active Tenant</th>
+                            <th>Email</th>
+                            <th>phone</th>
+                            <th>gender</th>
+                            <th>lasrraId</th>
+                            <th>country</th>  
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
                             <th>Avatar</th>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Active Tenant</th>
+                            <th>Email</th>
+                            <th>phone</th>
+                            <th>gender</th>
+                            <th>lasrraId</th>
+                            <th>country</th>
                           </tr>
                         </tfoot>
                         <tbody>
@@ -773,11 +857,23 @@
                               </div>
                             </td>
                             <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
+                            <td>
+
+                              <div class="d-flex align-items-center">
+                                <i class="fas fa-check  text-green"></i>
+                                
+                              <span style="padding-left: 10px;">mosesbob@gmail.com</span>
+                              </div>
+                              
+                            </td>
+                            <td>mosesbob@gmail.com</td>
                             <td>61</td>
                             <td>2011/04/25</td>
                             <td>$320,800</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
+
+
                           </tr>
                           <tr>
 
@@ -791,11 +887,22 @@
                               </div>
                             </td>
                             <td>Garrett Winters</td>
-                            <td>Accountant</td>
+                            <td>
+
+                              <div class="d-flex align-items-center">
+                                <i class="fas fa-check  text-green"></i>
+
+                              <span style="padding-left: 10px;">mosesbob@gmail.com</span>
+                              </div>
+                              
+                            </td>
                             <td>Tokyo</td>
                             <td>63</td>
                             <td>2011/07/25</td>
                             <td>$170,750</td>
+                            <td>$320,800</td>
+                            <td>$320,800</td>
+
                           </tr>
                           <tr>
                             <td>
@@ -808,11 +915,21 @@
                               </div>
                             </td>
                             <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
+                            <td>
+
+                              <div class="d-flex align-items-center">
+                                <i class="fas fa-check  text-green"></i>
+                                
+                              <span style="padding-left: 10px;">mosesbob@gmail.com</span>
+                              </div>
+                              
+                            </td>
                             <td>San Francisco</td>
                             <td>66</td>
                             <td>2009/01/12</td>
                             <td>$86,000</td>
+                            <td>$320,800</td>
+
                           </tr>
                           <tr>
 
@@ -1303,10 +1420,14 @@
         });
       });
 
-
+/*
       setTimeout(() => {
-        $('body > div.wrapper > div.main-panel > div.main-header > div > div > div').click();
-      }, 2000);
+        
+        $('.custom-template').removeClass('open');
+        toggle.removeClass('toggled');
+        custom_open = 0;
+      }, 1000);
+  */
     </script>
   </body>
 </html>
