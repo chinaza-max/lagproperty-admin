@@ -1,6 +1,4 @@
 
-console.log("dddddddddddd")
-console.log("dddddddddddd")
 
 
 class General {
@@ -10,7 +8,7 @@ class General {
         this.token=localStorage.getItem("token")
     }
   
-    postData(path, data) {
+    postData(path, data , button , buttonL) {
 
         const token=this.token||''
 
@@ -21,38 +19,37 @@ class General {
                 contentType: 'application/json',
                 data: JSON.stringify(data),
                 headers: token ? { 'Authorization': `Bearer ${token}` } : {},
-                beforeSend: () => {
-                  // Show the loader
-                  this.showLoader();
-                },
                 success: function(response) {
                   console.log('Request successful:', response);
                   //this.hideLoader();
 
+                  $(`#${buttonL}`).hide();
+                  $(`#${button}`).show();
+
+                  if(path==="/login"){
+
+                     // localStorage.setItem("token", )
+                  }
                 },
                 error: function(error) {
                   console.error('Request failed:', error);
                  // this.hideLoader();
 
+                 $(`#${buttonL}`).hide();
+                 $(`#${button}`).show();
+
                 }
               });
             
         } catch (error) {
-          this.hideLoader();
+          $(`#${buttonL}`).hide();
+          $(`#${button}`).show();
 
         } 
 
     }
 
-    showLoader() {
-      document.getElementById("loginForm").classList.add("loading");
-
-      
-    }
   
-    hideLoader() {
-      document.getElementById("loginForm").classList.remove("loading");
-    }
 
     getBasePath(path) {
       // Remove the ".html" extension if it exists
@@ -74,34 +71,40 @@ class General {
     const basePath = myGeneral.getBasePath(currentPath); 
 
     if (basePath === "/login") {
+   
 
-
-      console.log("aaaaaaaaaaaaa")
+      // Show the Loading button   
       const form = document.getElementById('loginForm');
+      $(`#loginButtonL`).hide();
 
       form.addEventListener('submit', function (event) {
-          event.preventDefault(); // Prevent the default form submission
+          event.preventDefault(); 
+
+          $("#loginButtonL").show();
+          $("#loginButton").hide();
+
   
           // Get the input values
           const email = document.getElementById('emailInput').value;
           const password = document.getElementById('passwordInput').value;
-  
+
+  /*
           // Check if both fields are filled
           if (!email || !password) {
               alert('Both fields are required.');
               return;
-          }
+          }*/
   
           // Proceed with the submission (you can send the data to the server here)
           const data = {
-              email: email,
-              password: password
+              emailAddress: email,
+              password: password,
+              type:"admin"
           };
   
           console.log('Form submitted:', data);
-  
-          // Here you can call a function to send the data via AJAX or fetch
-          myGeneral.postData('your-api-endpoint', data);
+
+          myGeneral.postData('auth/loginUser', data, "loginButton", "loginButtonL");
       });
 
 
