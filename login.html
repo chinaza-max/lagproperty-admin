@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
+
+    
     <style>
         body {
             background-color: #f8f9fa;
@@ -115,6 +123,8 @@
                             <label class="form-check-label" for="rememberMe">Remember me</label>
                         </div>
                     </div>
+
+                    <div style="color: red; " id="errorMessage"></div>
                     
                     <button id="loginButton" type="submit" class="btn btn-primary btn-login">Sign In</button>
 
@@ -164,7 +174,9 @@
             this.classList.toggle('bi-eye-slash');
         });
     </script>
+    <script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
     <script src="./assets/js/main.js"></script>
+    
 </body>
 </html>
