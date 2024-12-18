@@ -200,7 +200,7 @@ class General {
   else if (basePath === "/index") {
 
     $('#Logout').click(function () {
-      myGeneral.logout()z
+      myGeneral.logout()
     })
 
     $("#profileid").attr('src', 'assets/img/profile.jpg');
