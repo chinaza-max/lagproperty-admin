@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
           amount: "$250.00",
           status: "Completed",
         },
-        {  
+        {     
           id: "#10232-23333-3333940",
           type: "payment",
           date: "Mar 20, 2020, 1.15pm",
