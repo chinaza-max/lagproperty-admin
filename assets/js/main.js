@@ -128,6 +128,62 @@ class General {
 
     }
 
+
+    getData( path , callback ,query  ,loader) {
+
+
+        if (!navigator.onLine) {
+
+          $("#errorMessage").text("You are offline")
+          return    
+
+        }
+
+        const token=this.token||''
+        const queryString = query
+        ? '?' + new URLSearchParams(query).toString()
+        : '';
+
+
+
+        try {   
+            $.ajax({
+                url: this.domain + path + queryString,
+                type: 'GET',
+                contentType: 'application/json',
+                headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+                success: (response) => {
+                  const response2=response.data
+
+
+                  if(path==="user/getAllTrasaction"){
+
+                    if(loader){
+                      $(`#${loader}`).css('display', 'none');
+                    }
+
+                  }
+                  callback(response2)
+
+                },
+                error: function(error) {
+
+
+                  if(path==='auth/loginUser'){
+                    $("#errorMessage").text(error.responseJSON.message)
+                  }
+
+                }
+              });
+            
+        } catch (error) {
+          console.log(error)
+
+
+        } 
+
+    }
+
   
     navigateM(path){
         window.location.href=path
@@ -137,6 +193,45 @@ class General {
       // Remove the ".html" extension if it exists
       const basePath = fileName.replace(/\.html$/, "");
       return basePath;
+    }
+    appendHtmlToDiv(htmlContent, divId) {
+      const div = document.getElementById(divId);
+      if (div) {
+        div.innerHTML += htmlContent;
+      } else {
+        console.error(`Div with ID "${divId}" not found.`);
+      }
+    }
+    generateTransactionTable(transactions) {
+
+      if (!Array.isArray(transactions)) {
+        console.error("Invalid transactions array.");
+        return "";
+      }
+  
+      return transactions
+        .map(
+          (transaction) => `
+          <tr>
+            <td scope="row">
+              <button class="btn btn-icon btn-round btn-sm me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
+                </svg>
+              </button>
+              ${transaction.id}
+            </td>
+            <td scope="row">${transaction.type}</td>
+            <td class="text-end">${transaction.date}</td>
+            <td class="text-end">${transaction.amount}</td>
+            <td class="text-end">
+              <span class="badge ${
+                transaction.status === "Completed" ? "badge-success" : "badge-warning"
+              }">${transaction.status}</span>
+            </td>
+          </tr>`
+        )
+        .join("");
     }
 
   }
@@ -209,14 +304,44 @@ document.addEventListener("DOMContentLoaded", function () {
       myGeneral.logout()
     })
 
-    $("#profileid").attr('src', 'assets/img/profile.jpg');
+    //$("#profileid").attr('src', 'assets/img/profile.jpg');
     const user= JSON.parse(localStorage.getItem("user"))
-    console.log(user)
     $("#userEmail").text(user.emailAddress) 
     $("#userName").text(user.firstName+" "+user.lastName)
     $("#userName2").text(user.firstName)
-
     $('.my-avatar').attr('src',user.image);
+
+    function callback(data){
+    
+      $("#Owner").text(data.propertyManagerCount)
+      $("#Building").text(data.BuildingCount)
+      $("#Tenant").text(data.tenantCount)
+      $("#PropectiveT").text(data.prospectiveTenantCount)
+
+    }
+
+    function callback2(data){
+      $("#Escrow").text("₦" + data.totalEscrowBalance)
+    }
+
+    function callback3(data){
+      $("#Balance").text("₦" + data.currentBalance)
+
+    }
+
+    function callback4(data){
+      console.log(data)
+
+    }
+
+    const query={
+      limit:20
+    }
+    myGeneral.getData("user/getCount", callback)
+    myGeneral.getData("user/getTotalEscrowBalance", callback2)
+    myGeneral.getData("user/getIncome", callback3)
+    myGeneral.getData("user/getAllTrasaction", callback4, query,"loader")
+
 
   }
 
