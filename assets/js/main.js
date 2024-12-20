@@ -6,7 +6,7 @@ class General {
 
         this.domain="https://lagproperty.onrender.com/api/v1/"
         this.token=localStorage.getItem("token")
-        this.restrictedPaths = ["/login"];
+        this.restrictedPathsNoLogin = ["login"];
         this.navigateM=this.navigateM.bind(this)
         this.postData=this.postData.bind(this)
         this.runFirst()
@@ -18,15 +18,19 @@ class General {
     }
     runFirst(){  
 
-      const basePath = this.getBasePath(window.location.pathname); 
-
+      const basePath = this.getBasePath(window.location.pathname);  
+      console.log(this.isTokenAvailable())
 
 
       // Check if the current path is in the restricted paths and if the token is available
-      if (this.restrictedPaths.includes(basePath) && this.isTokenAvailable()) {
+      if (this.restrictedPathsNoLogin.includes(basePath) && this.isTokenAvailable()) {
         // Redirect to home page
         //window.location.href = "/index.html";
         this.navigateM("/index.html")
+      }
+      else if(this.restrictedPathsNoLogin.includes(basePath) === this.isTokenAvailable()){
+
+        this.navigateM("/login.html")
       }
 
 
@@ -129,9 +133,9 @@ class General {
         window.location.href=path
     }
     getBasePath(path) {
+      const fileName = path.split('/').pop();
       // Remove the ".html" extension if it exists
-      const basePath = path.replace(/\.html$/, "");
-      // Return the path without extension (e.g., "/login.html" => "/login")
+      const basePath = fileName.replace(/\.html$/, "");
       return basePath;
     }
 
@@ -142,13 +146,13 @@ class General {
   
 
   
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
     const currentPath = window.location.pathname;
     const basePath = myGeneral.getBasePath(currentPath); 
 
 
-  if (basePath === "/login") {
+  if (basePath === "login") {
     // Show the Loading button   
     const form = document.getElementById('loginForm');
     $(`#loginButtonL`).hide();
@@ -183,7 +187,7 @@ class General {
         const data ={
           firstName:"chinaza",
           lastName:"ogbonna",
-          emailAddress:"mosesogbonn68@gmail.com",
+          emailAddress:"mosesogbonna68@gmail.com",
           password:"admin100",
           image:"sssss",
           privilege:"admin",
@@ -197,7 +201,9 @@ class General {
 
 
   }   
-  else if (basePath === "/index") {
+  else if (basePath === "index") {
+
+
 
     $('#Logout').click(function () {
       myGeneral.logout()
@@ -208,6 +214,10 @@ class General {
     console.log(user)
     $("#userEmail").text(user.emailAddress) 
     $("#userName").text(user.firstName+" "+user.lastName)
+    $("#userName2").text(user.firstName)
+
+    $('.my-avatar').attr('src',user.image);
+
   }
 
 
