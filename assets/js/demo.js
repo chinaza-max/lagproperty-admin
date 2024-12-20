@@ -199,7 +199,7 @@ $.notify({
 	placement: {
 		from: "bottom",
 		align: "right"
-	},
+	},	
 	time: 1000,
 });
 

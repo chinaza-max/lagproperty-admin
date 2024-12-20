@@ -107,8 +107,7 @@ class General {
                 },
                 error: function(error) {
 
-                  console.log(buttonL)
-                  console.log(button)
+             
 
                   $(`#${buttonL}`).hide();
                   $(`#${button}`).show();
@@ -134,6 +133,7 @@ class General {
 
         if (!navigator.onLine) {
 
+          console.log("ddddddddddddddffffggggggg")
           $("#errorMessage").text("You are offline")
           return    
 
@@ -330,13 +330,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function callback4(data){
-      console.log(data)
+      console.log(data.length)
 
+
+      data = [
+        {
+          id: "#10231-23333-3333939",
+          type: "commission",
+          date: "Mar 19, 2020, 2.45pm",
+          amount: "$250.00",
+          status: "Completed",
+        },
+        {  
+          id: "#10232-23333-3333940",
+          type: "payment",
+          date: "Mar 20, 2020, 1.15pm",
+          amount: "$300.00",
+          status: "Pending",
+        },
+      ];
+      if(data.length>0){
+        $('#alertTransaction').css('display', 'none');
+
+      }
+      else{
+
+      }
     }
 
     const query={
       limit:20
     }
+
     myGeneral.getData("user/getCount", callback)
     myGeneral.getData("user/getTotalEscrowBalance", callback2)
     myGeneral.getData("user/getIncome", callback3)
